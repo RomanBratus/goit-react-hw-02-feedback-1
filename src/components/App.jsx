@@ -29,11 +29,10 @@ class App extends Component {
   };
   render() {
     const buttonNames = Object.keys(this.state);
-    // console.log(buttonName);
+
     return (
       <div
         style={{
-          // height: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
