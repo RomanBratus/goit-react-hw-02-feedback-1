@@ -26,8 +26,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
           style={buttonStyle}
           key={nanoid()}
           type="button"
-          name={option}
-          onClick={onLeaveFeedback}
+          onClick={() => onLeaveFeedback(option)}
         >
           {option}
         </button>
