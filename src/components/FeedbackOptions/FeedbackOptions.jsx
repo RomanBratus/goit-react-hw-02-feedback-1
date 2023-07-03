@@ -26,7 +26,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
           style={buttonStyle}
           key={nanoid()}
           type="button"
-          onClick={() => onLeaveFeedback(option)}
+          name={option}
+          onClick={onLeaveFeedback}
         >
           {option}
         </button>
@@ -36,7 +37,6 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.func.isRequired,
-
   options: PropTypes.arrayOf(
     PropTypes.shape({
       option: PropTypes.string.isRequired,

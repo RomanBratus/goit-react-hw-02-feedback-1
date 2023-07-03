@@ -10,12 +10,12 @@ class App extends Component {
     neutral: 0,
     bad: 0,
   };
-
-  handleClickButton = option => {
+  handleClickButton = event => {
+    const name = event.target.name;
     this.setState(prevState => {
       console.log(prevState);
       console.log(name);
-      return { [option]: prevState[name] + 1 };
+      return { [name]: prevState[name] + 1 };
     });
   };
 
@@ -29,10 +29,6 @@ class App extends Component {
   };
   render() {
     const buttonNames = Object.keys(this.state);
-    const { good, neutral, bad } = this.state;
-    const total = this.totalFeedbacks();
-    const positivePercentage = this.countPositivePercent();
-
     return (
       <div
         style={{
@@ -46,26 +42,26 @@ class App extends Component {
         }}
       >
         <Section title="Please leave feedback">
+          {/* <Section title="Please live feedback"></Section> */}
           <FeedbackOptions
             options={buttonNames}
             onLeaveFeedback={this.handleClickButton}
           />
         </Section>
 
-        <Section title={'Statistics'}>
-          {total ? (
+        {this.totalFeedbacks() ? (
+          <Section title={'Statistics'}>
             <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={total}
-              positivePercentage={positivePercentage}
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.totalFeedbacks()}
+              positivePercentage={this.countPositivePercent()}
             />
-          ) : (
-            <Notification message="No feedback given" />
-          )}
-        </Section>
-
+          </Section>
+        ) : (
+          <Notification message={'There is no feedback'} />
+        )}
       </div>
     );
   }

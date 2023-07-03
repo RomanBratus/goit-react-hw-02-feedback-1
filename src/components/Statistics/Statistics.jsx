@@ -19,6 +19,5 @@ Statistics.propTypes = {
   bad: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
 };
 export default Statistics;
